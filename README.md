@@ -8,4 +8,3 @@ Dynamic Measurement in OpenLayers with labels that follows changing geometry
 742GeHpo0C3FkcWkrb9XTGQcY5Bvt0rYHkIwZomT
 8yjomm5Vn0QzCaVIHaou
 
-Apart from the measurement tool i added the Cadastral viewe Using Naver API
