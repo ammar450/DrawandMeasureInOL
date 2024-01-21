@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Naver Map with Cadastral Layer</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=8yjomm5Vn0QzCaVIHaou"></script>
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #toggleCadastral {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: white;
+            padding: 5px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <button id="toggleCadastral">Toggle Cadastral Layer</button>
+    <script>
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(37.3595704, 127.105399),
+            zoom: 10,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                style: naver.maps.MapTypeControlStyle.DROPDOWN
+            }
+        });
+
+        var cadastralLayer = new naver.maps.CadastralLayer();
+        cadastralLayer.setMap(map); // Initialize the cadastral layer on the map
+
+        var toggleBtn = document.getElementById('toggleCadastral');
+
+        toggleBtn.addEventListener("click", function() {
+            if (!map || !cadastralLayer) {
+                console.error("Map or cadastral layer is not initialized");
+                return;
+            }
+
+            if (cadastralLayer.getMap()) {
+                cadastralLayer.setMap(null);
+                toggleBtn.textContent = 'Show Cadastral Layer';
+            } else {
+                cadastralLayer.setMap(map);
+                toggleBtn.textContent = 'Hide Cadastral Layer';
+            }
+        });
+    </script>
+</body>
+</html>
